@@ -1,0 +1,40 @@
+# =================== #
+name: MainYML
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* * * * *"
+# =================== #
+jobs:
+  Build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+# =================== #
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install selenium requests random-text-generator undetected-chromedriver==1.5.2
+    - name: Mulai
+      run: python main.py
+    - name: Mulai 2
+      run: python main.py
+    - name: Mulai 3
+      run: python main.py
+    - name: Mulai 4
+      run: python main.py
+    - name: Mulai 5
+      run: python main.py
+    - name: Mulai 6
+      run: python main.py
+
+    - name: Retry Step
+      uses: nick-invision/retry@v2.4.0
+
+# =================== #
